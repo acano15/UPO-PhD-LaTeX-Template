@@ -68,10 +68,6 @@
 \setlength{\parindent}{1.5em}
 \setlength{\parskip}{0em}
 
-%-------------------HEADERS---------------%
-%\rhead{\includegraphics[width=0.20\textwidth,height=8.0mm]{MSTC}}
-%\lhead{{\includegraphics[width=0.20\textwidth,height=8.0mm]{ETSIT}}}
-
 % hiperlinks
 \hypersetup{
     colorlinks=true,          % Enable colored links
@@ -84,9 +80,13 @@
 \fancyhf{}   % Clear the default header and footer
 \renewcommand{\headrulewidth}{0.2pt}
 
-\fancyhead[RO]{\nouppercase \leftmark}  % Define the header for odd and even pages
+%\fancyhead[RO]{\nouppercase \leftmark}  % Define the header for odd and even pages
 %\fancyhead[LE]{\thesisAuthor}           % Define the header for odd and even pages
 \fancyfoot[C]{\thepage}
+
+% To include an image
+%\rhead{\includegraphics[width=0.20\textwidth,height=8.0mm]{figures/sample_image.png}}
+%\lhead{{\includegraphics[width=0.20\textwidth,height=8.0mm]{figures/sample_image.png}}}
 
 % Increase indentation in lists
 \newlist{mydescription}{description}{1}
@@ -177,14 +177,33 @@
 \renewcommand{\listfigurename}{List of Figures}
 \renewcommand{\listtablename}{List of Tables}
 
-% Define the custom page number style
+% Remove "Chapter" from the chapter mark
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ #1}{}}
+
+% Remove section numbering from the section mark
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+
+% Define the custom header
 % Define the custom page number style in the footer
-\fancypagestyle{fancyFooter}{  % Use the 'fancyFooter' style for pages with no header
+\fancypagestyle{customHeaderFooter}{  % Use the 'customHeaderFooter' style for pages with no header
     \fancyhf{}  % Clear all headers and footers
+    % Make the header semitransparent using TikZ
+    \fancyhead[L]{%
+        \begin{tikzpicture}[baseline=(current bounding box.south)]
+            \node[opacity=0.65] {\leftmark};  % Chapter name on the left with transparency
+        \end{tikzpicture}
+    }
+    
+    \fancyhead[R]{%
+        \begin{tikzpicture}[baseline=(current bounding box.south)]
+            \node[opacity=0.45] {\rightmark};  % Section name on the right with transparency
+        \end{tikzpicture}
+    }
+
     \fancyfoot[R]{%
         \tikz[baseline=(X.base)] \node[fill=gray!20, minimum width=1cm, minimum height=2cm, text height=1.5ex, text depth=.25ex] (X) {\thepage};  % Custom right-aligned vertical box
     }
-    \renewcommand{\headrulewidth}{0pt}  % Remove any header rule
+    \renewcommand{\headrulewidth}{0.6pt}  % Enable a header rule line
     \renewcommand{\footrulewidth}{0pt}  % Remove footer rule (if any)
 }
 
