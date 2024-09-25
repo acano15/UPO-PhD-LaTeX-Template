@@ -77,11 +77,11 @@ titlepage=on            % own page for each title page
 \clearpage
 \pagenumbering{arabic} 
 \setcounter{page}{1}
-\pagestyle{fancyFooter}
+\pagestyle{customHeaderFooter}
 
 % Ensure 'plain' style uses 'fancy_footer'
 \makeatletter
-\let\ps@plain\ps@fancyFooter  % Override 'plain' page style to use 'fancy_footer'
+\let\ps@plain\ps@customHeaderFooter  % Override 'plain' page style to use 'customHeaderFooter'
 \makeatother
 
 
