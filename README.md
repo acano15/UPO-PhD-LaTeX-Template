@@ -1,3 +1,5 @@
+![Thesis Preview](./images/preview.png)
+
 # **UPO LaTeX Thesis Template**
 
 ## Welcome to the **UPO LaTeX Thesis Template** Repository
