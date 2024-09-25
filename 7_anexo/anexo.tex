@@ -1,0 +1,70 @@
+\chapter*{Anexo}
+\section*{Example pyhthon code 1}\label{anexo1}
+\begin{lstlisting}[language=Python]
+
+import os
+
+class ThesisTemplate:
+	def __init__(self, author_name):
+		self.author_name = author_name
+
+	def print_greeting(self):
+		message = f"Hello, World! I am a template for the thesis authored by {self.author_name}."
+		border = "*" * len(message)
+		print(border)
+		print(message)
+		print(border)
+
+if __name__ == "__main__":
+	author = "Your Name"  # Replace with your actual name
+	template = ThesisTemplate(author)
+	template.print_greeting()
+\end{lstlisting}
+
+
+\section*{Example pyhthon code 2}\label{anexo2}
+\begin{lstlisting}[language=Python]
+import random
+import numpy as np
+
+class SampleTemplate:
+	def __init__(self):
+		self.operation = self.generate_random_operation()
+
+	def generate_random_operation(self):
+		# Generate two random integers
+		num1 = random.randint(1, 10)
+		num2 = random.randint(1, 10)
+		
+		# Choose a random operation 
+		operations = ['+', '-', '*', '/']
+		operation = random.choice(operations)
+		
+		# Calculate result based on operation
+		if operation == '+':
+		result = num1 + num2
+		elif operation == '-':
+		result = num1 - num2
+		elif operation == '*':
+		result = num1 * num2
+		elif operation == '/':
+		# Prevent division by zero
+		if num2 == 0:
+		num2 = 1  # Change num2 to 1 to avoid division by zero
+		result = num1 / num2
+		
+		return f"{num1} {operation} {num2} = {result}"
+
+	def greet(self):
+		print("Hello World! I am a template for the thesis.")
+		print("Here's a random numeric operation for you:")
+		print(self.operation)
+
+# Example of how to use the class
+if __name__ == "__main__":
+	template = SampleTemplate()
+	template.greet()
+	
+
+
+\end{lstlisting}
