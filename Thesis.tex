@@ -1,0 +1,117 @@
+%---------------------------------------------------------------------------%
+%-                                                                         -%
+%-                           LaTeX Template UPO                            -%
+%-                                                                         -%
+%---------------------------------------------------------------------------%
+
+%---------------------------------------------------------------------------%
+%->> Document class declaration
+%---------------------------------------------------------------------------%
+
+\documentclass[
+A4paper,                % paper size A4
+twoside,                % onesite or twoside printing
+openany,              % doublepage cleaning ends up right side
+chapterprefix=true,     % prefix for chapter marks
+12pt,                   % font size
+headings=normal,        % size of headings
+titlepage=on            % own page for each title page
+]{book}
+\let\cleardoublepage\clearpage
+
+%---------------------------------------------------------------------------%
+%->> Document Details
+%---------------------------------------------------------------------------%
+
+\newcommand{\University}{\protect{Universidad Pablo de Olavide}}
+\newcommand{\UNIVERSITY}{\protect{UNIVERSIDAD PABLO DE OLAVIDE}}
+
+\newcommand{\thesisTitle}{\protect {<Title of the doctoral thesis>}}
+\newcommand{\thesisAuthor}{\protect{<Name and Surnames>}}
+\newcommand{\priorstudies}{\protect{<Previous academic degree>}}
+\newcommand{\thesisDate}{<Year>}
+
+\newcommand{\UPOCentre}{\protect {<Faculty name, not abbreviated>}}
+
+
+\newcommand{\DoctoralProgramme}{\protect{<Name of the doctoral programme, not abbreviated>}}
+
+\newcommand{\supervisor}{<Supervisor Name and Surnames> }
+\newcommand{\cosupervisor}{<[Add co-supervisor if applicable]> }
+
+\newcommand{\supervisorDetails}{<Supervisor Name and Surnames, position, institution> }
+\newcommand{\cosupervisorDetails}{<[Add co-supervisor if applicable, including position and institution]> }
+
+%---------------------------------------------------------------------------%
+%->> Document Style and Settings
+%---------------------------------------------------------------------------%
+
+\input{Style/settings}
+\graphicspath{{./figures/}}
+
+%---------------------------------------------------------------------------%
+%->> Document inclusion content
+%---------------------------------------------------------------------------%
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\begin{document}
+
+%\frontmatter
+\input{0_Front/front}% title page, abstract, dedication
+
+\clearpage
+\thispagestyle{empty}
+\tableofcontents
+\begingroup
+\let\clearpage\relax
+
+\newpage
+\listoffigures
+\listoftables
+\input{0_Front/0_7_acronyms}
+\endgroup
+
+\newpage
+\clearpage
+\pagenumbering{arabic} 
+\setcounter{page}{1}
+\pagestyle{fancyFooter}
+
+% Ensure 'plain' style uses 'fancy_footer'
+\makeatletter
+\let\ps@plain\ps@fancyFooter  % Override 'plain' page style to use 'fancy_footer'
+\makeatother
+
+
+%--------------CHAPTER 1-------------------%
+\input{1_Introduction/introduction}
+
+%--------------CHAPTER 2-------------------%
+\input{2_Related_work/related_work}
+
+%--------------CHAPTER 3-------------------%
+\input{3_Proposed_method/proposed_method}
+
+%--------------CHAPTER 4-------------------%
+\input{4_Experiments_results/experiments_and_results}
+
+%--------------CHAPTER 5-------------------%
+\input{5_Discussion_future_lines/discussion_and_future_lines}
+
+%--------------CHAPTER 6-------------------%
+\input{6_Conclusion/conclusion}
+
+\newpage
+\nocite{*}
+\bibliographystyle{unsrt} 
+\bibliography{references} \label{chap::Bibliography}
+
+
+%--------------ANEXO-------------------%
+\input{7_anexo/anexo}
+
+\end{document}
+%---------------------------------------------------------------------------%
+

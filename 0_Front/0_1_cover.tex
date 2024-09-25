@@ -1,0 +1,50 @@
+% called by main.tex
+\begin{center}
+\begin{spacing}{1.3}
+    \textbf{\large {\UNIVERSITY}}\\
+    \textbf{\large {\UPOCentre}}\\
+    \vspace{5mm}
+\end{spacing}
+% Insert the reflected image with opacity for the reflection effect
+\begin{tikzpicture}
+	% Original image
+	\node[inner sep=0pt] (img) {\includegraphics[width=5cm]{figures/upo_logo.png}};
+	
+	% Reflect and clip to show only the top third
+	\begin{scope}
+		\clip (img.south west) rectangle ([yshift=-0.9cm]img.south east);
+		\node[opacity=0.4, anchor=north, inner sep=0pt] at (img.south) 
+		{\reflectbox{\includegraphics[width=5cm]{figures/upo_logo.png}}};
+	\end{scope}
+	
+	% Apply the gradient fade to the reflection
+	\fill[white, path fading=north, fading transform={yshift=0.3cm}, opacity=0.95] 
+	(img.south west) rectangle ([yshift=-0.95cm]img.south east);
+\end{tikzpicture}
+
+\begin{spacing}{2.0}
+\textbf{\LARGE {\thesisTitle}}
+\end{spacing}
+
+\vspace{15 mm}
+
+\begin{spacing}{1.3}
+\textbf{\LARGE {D\,O\,C\,T\,O\,R\,A\,L\, T\,H\,E\,S\,I\,S}}\\
+\medskip
+{\large {Submitted for the degree of Doctor by:}}
+\end{spacing}
+\end{center}
+
+
+\begin{center}
+\begin{spacing}{1.3}
+\textbf{\Large {\thesisAuthor}}\\
+{\large {\priorstudies}}\\
+\end{spacing}
+\end{center}
+
+\vspace{\fill}
+
+\begin{center}
+   \large {Sevilla, \thesisDate}
+\end{center}
